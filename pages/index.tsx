@@ -10,13 +10,14 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ baseUrl }) => {
+  const title = "ここにはタイトルが入ります";
   return (
     <div>
       <Head>
         <title>OGP Example</title>
         <meta property="og:image" content={`${baseUrl}/api/og`} />
       </Head>
-      <img src={`${baseUrl}/api/og`} alt="" />
+      <img src={`${baseUrl}/api/og?title=${title}`} alt="" />
     </div>
   );
 };
