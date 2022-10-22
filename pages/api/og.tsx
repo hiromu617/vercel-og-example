@@ -5,8 +5,13 @@ export const config = {
   runtime: "experimental-edge",
 };
 
-export default function ogp(req: NextRequest) {
+const font = fetch(
+  new URL("../../assets/NotoSansJP-Bold.otf", import.meta.url)
+).then((res) => res.arrayBuffer());
+
+export default async function ogp(req: NextRequest) {
   const { searchParams } = new URL(req.url);
+  const fontData = await font;
 
   const hasTitle = searchParams.has("title");
   const title = hasTitle
@@ -30,6 +35,8 @@ export default function ogp(req: NextRequest) {
           alignItems: "center",
           justifyContent: "center",
           color: "white",
+          fontFamily: '"NotoSansJP"',
+          textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
         }}
       >
         {title}
@@ -38,6 +45,13 @@ export default function ogp(req: NextRequest) {
     {
       width: 1200,
       height: 600,
+      fonts: [
+        {
+          name: "NotoSansJP",
+          data: fontData,
+          style: "normal",
+        },
+      ],
     }
   );
 }
