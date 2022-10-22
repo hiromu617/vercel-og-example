@@ -19,6 +19,8 @@ export default async function ogp(req: NextRequest) {
     : "My default title";
   const hasUserName = searchParams.has("userName");
   const userName = hasUserName ? searchParams.get("userName") : "unknown";
+  const hasPostDate = searchParams.has("postDate");
+  const postDate = hasPostDate ? searchParams.get("postDate") : "unknown";
   return new ImageResponse(
     (
       <div
@@ -72,7 +74,7 @@ export default async function ogp(req: NextRequest) {
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
             }}
           >
-            2022.10.22
+            {postDate}
           </h2>
           <div
             style={{

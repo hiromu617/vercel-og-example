@@ -12,6 +12,8 @@ type Props = {
 const Home: NextPage<Props> = ({ baseUrl }) => {
   const title = "【デザイン不要】@vercel/ogを使っていい感じの動的OGPをつくる";
   const userName = "hiromu617";
+  const date = new Date();
+  const postDate = new Intl.DateTimeFormat("ja").format(date);
   return (
     <div>
       <Head>
@@ -19,7 +21,7 @@ const Home: NextPage<Props> = ({ baseUrl }) => {
         <meta property="og:image" content={`${baseUrl}/api/og`} />
       </Head>
       <img
-        src={`${baseUrl}/api/og?title=${title}&userName=${userName}`}
+        src={`${baseUrl}/api/og?title=${title}&userName=${userName}&postDate=${postDate}`}
         alt=""
       />
     </div>
