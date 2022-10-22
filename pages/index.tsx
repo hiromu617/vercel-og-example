@@ -10,14 +10,18 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ baseUrl }) => {
-  const title = "ここにはタイトルが入ります";
+  const title = "【デザイン不要】@vercel/ogを使っていい感じの動的OGPをつくる";
+  const userName = "hiromu617";
   return (
     <div>
       <Head>
         <title>OGP Example</title>
         <meta property="og:image" content={`${baseUrl}/api/og`} />
       </Head>
-      <img src={`${baseUrl}/api/og?title=${title}`} alt="" />
+      <img
+        src={`${baseUrl}/api/og?title=${title}&userName=${userName}`}
+        alt=""
+      />
     </div>
   );
 };
